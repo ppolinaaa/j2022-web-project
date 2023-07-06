@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link rel="stylesheet" href="css/reg_style.css">
+
+    <script language="JavaScript" type="text/javascript">
+        function validation() {
+            var userName = document.regForm.username.value;
+            if(userName.trim().length <= 1) {
+                alert("Incorrect User Name");
+                //focus on element
+                document.regForm.username.focus();
+                return false;
+            }
+            var pas1 =  document.regForm.pwd1.value;
+            var pas2 =  document.regForm.pwd2.value;
+            if(pas1.length < 8) {
+                alert("Incorrect password, write more than 8 symbols");
+                document.regForm.pwd1.focus();
+                return false;
+            }
+            if(pas1 != pas2) {
+                alert("Your password 1 is not equal with password 2");
+                document.regForm.pwd1.focus();
+                return false;
+            }
+
+            //email
+            var email = document.regForm.email.value;
+            if(email.trim().length <= 1) {
+                alert("Empty email");
+                //focus on element
+                document.regForm.email.focus();
+                return false;
+            } else {
+                if (!validation()) {
+                    return false;
+                }
+            }
+
+
+        }
+
+        function validationEmail() {
+            var email=document.regForm.email.value;
+            var pos1=email.indexOf("@");
+            var pos2=email.lastindexOf("."); //Jhon/Jhonson@gmail.com
+            if(pos1 < 1|| (pos2 - pos1 <2)) {
+            alert("Incorrect email");
+            document.regForm.email.focus();
+            return false;
+        }
+// all valid
+            return true;
+        }
+
+
+    </script>
+</head>
+<body>
+<div class="container">
+    <form id="register-form" action="https://www.google.com/" method="get" name="regForm" onsubmit="return validation()">
+        <h2>Форма регистрации</h2>
+
+        <label for="username">Имя:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="last-name">Фамилия:</label>
+        <input type="text" id="last-name" name="last-name" required>
+
+        <label for="pwd1">Пароль:</label>
+        <input type="password" id="pwd1" name="pwd1" required>
+
+        <label for="pwd2">Повторите пароль::</label>
+        <input type="password" id="pwd2" name="pwd2" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="country">Страна:</label>
+        <select id="country" name="country">
+            <option value="-1">Выберите страну</option>
+            <option value="canada">Канада</option>
+            <option value="uk">Великобритания</option>
+            <option value="japan">Япония</option>
+        </select><br><br>
+
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+
+    <!--    <form id="feedback-form" action="#">-->
+    <!--        <h2>Форма обратной связи</h2>-->
+    <!--        <label for="name">Имя:</label>-->
+    <!--        <input type="text" id="name" name="name" required>-->
+
+    <!--        <label for="message">Сообщение:</label>-->
+    <!--        <textarea id="message" name="message" required></textarea>-->
+
+    <!--        <button type="submit">Отправить</button>-->
+    <!--    </form>-->
+    <!--</div>-->
+
+    <!--<script src="js/script.js"></script>-->
+</body>
+</html>
+
